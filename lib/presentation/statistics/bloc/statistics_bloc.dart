@@ -16,7 +16,6 @@ class StatisticsBloc extends Bloc<StatisticsEvent, StatisticsState> {
 
   Future<void> _initial(Initial event, Emitter emit) async {
     emit(state.copyWith(status: PageState.loading));
-
     await emit.forEach<List<TodoModel>>(
       todosLocalRepository.getTodos(),
       onData: (todos) => state.copyWith(
